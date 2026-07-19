@@ -11,7 +11,7 @@ const CLASIFICACION_ICONS = {
   AHORRO: '👛',
   'AI & STREAMING': '🎬',
   ALIMENTACION: '🍣',
-  AMIGOS: '🧑‍🤝‍🧑',
+  AMIGOS: '👭',
   AUTO: '🚗',
   BANCO: '🏦',
   DEPORTE: '⚽',
