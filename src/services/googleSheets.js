@@ -311,7 +311,10 @@ function parseBudgetSheet(rows) {
 
 export async function appendCostRow(accessToken, spreadsheetId, { fecha, clasificacion, categoria, costo }) {
   // Columna B se deja vacia aqui: la hoja calcula el año-mes con formula
-  // (=TEXT(A{fila},"yyyy-mm")), igual que las filas existentes, en vez de texto plano.
+  // (=TEXTO(A55;"yyyy-mm")), igual que las filas existentes, en vez de texto
+  // plano. La hoja esta en configuracion regional en espanol, por lo que la
+  // formula debe usar el nombre de funcion localizado (TEXTO) y punto y coma
+  // como separador de argumentos, no TEXT(...,...) en ingles.
   const appendUrl = `${SHEETS_API}/${spreadsheetId}/values/${encodeURIComponent('GASTOS!A:E')}:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`
   const appendBody = { values: [[fecha, '', clasificacion.trim(), categoria.trim(), costo]] }
 
@@ -324,7 +327,7 @@ export async function appendCostRow(accessToken, spreadsheetId, { fecha, clasifi
 
   if (row) {
     const formulaUrl = `${SHEETS_API}/${spreadsheetId}/values/${encodeURIComponent(`GASTOS!B${row}`)}?valueInputOption=USER_ENTERED`
-    await axios.put(formulaUrl, { values: [[`=TEXT(A${row},"yyyy-mm")`]] }, {
+    await axios.put(formulaUrl, { values: [[`=TEXTO(A${row};"yyyy-mm")`]] }, {
       headers: { Authorization: `Bearer ${accessToken}` }
     })
   }
