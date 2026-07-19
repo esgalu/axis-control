@@ -1,0 +1,74 @@
+.top-expenses-container {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.top-expenses-container h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.top-expenses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.top-expense-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.top-expense-item:hover {
+  background: var(--bg-hover);
+}
+
+.top-expense-rank {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--bg-surface-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.top-expense-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.top-expense-name {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.top-expense-badge {
+  font-size: 0.65rem;
+  background: var(--info-bg-soft);
+  color: var(--info-text);
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.top-expense-amount {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-danger);
+  white-space: nowrap;
+}

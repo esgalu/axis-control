@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function () {
+        var hour = new Date().getHours()
+        var theme = (hour >= 19 || hour < 7) ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', theme)
+      })()
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/assets/logos/axis-isotipo.svg" />
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#185FA5" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="AXIS" />
+    <title>AXIS - Dashboard Finanzas</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

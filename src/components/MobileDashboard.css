@@ -1,0 +1,336 @@
+.mobile-dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-page);
+  overflow: hidden;
+}
+
+/* Header */
+.mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: max(10px, env(safe-area-inset-top)) 16px 8px;
+  background: color-mix(in srgb, var(--bg-surface) 90%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.mobile-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mobile-header-logo {
+  width: 24px;
+  height: 24px;
+}
+
+.mobile-header-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 2px;
+}
+
+.mobile-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobile-header-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-tertiary);
+}
+
+.mobile-refresh-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.mobile-refresh-btn:active:not(:disabled) {
+  background: var(--bg-hover);
+}
+
+.mobile-refresh-btn:disabled {
+  color: var(--text-faint);
+  cursor: not-allowed;
+}
+
+.mobile-refresh-btn.spinning svg {
+  animation: mobile-refresh-spin 0.8s linear infinite;
+}
+
+@keyframes mobile-refresh-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Scrollable content */
+.mobile-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 10px 10px 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.mobile-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Global resets for all components inside mobile ── */
+
+.mobile-content .tab-content {
+  padding: 0;
+}
+
+.mobile-content .section {
+  background: var(--bg-surface);
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.mobile-content .section h2 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.mobile-content .section-header {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.mobile-content .section-header h2 {
+  margin-bottom: 0;
+}
+
+/* Month selector */
+.mobile-content .month-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.mobile-content .month-btn {
+  padding: 3px 9px;
+  font-size: 11px;
+  border-radius: 12px;
+}
+
+/* ── Agregar gasto ── */
+.mobile-add-expense-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.mobile-add-expense-btn:active {
+  background: var(--color-primary-hover);
+}
+
+/* ── KPI Cards ── */
+.mobile-content .kpi-grid {
+  grid-template-columns: 1fr 1fr !important;
+  gap: 8px !important;
+}
+
+.mobile-content .kpi-card {
+  padding: 10px 12px !important;
+  border-radius: 12px !important;
+}
+
+.mobile-content .kpi-label {
+  font-size: 10px !important;
+  line-height: 1.3 !important;
+}
+
+.mobile-content .kpi-value {
+  font-size: 15px !important;
+  line-height: 1.4 !important;
+}
+
+.mobile-content .kpi-subtext {
+  font-size: 10px !important;
+}
+
+/* ── Charts ── */
+.mobile-content .chart-container {
+  height: 220px !important;
+  padding: 8px !important;
+}
+
+.mobile-content .chart-container.tall {
+  height: 240px !important;
+}
+
+/* ── Pie / Donut chart ── */
+.mobile-content .pie-layout {
+  flex-direction: column !important;
+  gap: 10px !important;
+  min-height: unset !important;
+}
+
+.mobile-content .pie-chart-area {
+  flex: none !important;
+  width: 100% !important;
+  height: 200px !important;
+}
+
+.mobile-content .pie-legend {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 6px 12px !important;
+  flex-direction: unset !important;
+}
+
+.mobile-content .pie-legend-item {
+  padding: 4px 0 !important;
+}
+
+.mobile-content .pie-legend-name {
+  font-size: 11px !important;
+}
+
+.mobile-content .pie-legend-pct {
+  font-size: 11px !important;
+}
+
+/* ── Budget ── */
+.mobile-content .budget-categories {
+  grid-template-columns: 1fr !important;
+  gap: 8px !important;
+}
+
+.mobile-content .budget-overview {
+  margin-bottom: 10px;
+}
+
+.mobile-content .budget-overview-text {
+  font-size: 12px !important;
+}
+
+.mobile-content .budget-cat-name {
+  font-size: 12px !important;
+}
+
+.mobile-content .budget-cat-values {
+  font-size: 11px !important;
+}
+
+.mobile-content .budget-overview-meta {
+  gap: 8px !important;
+}
+
+.mobile-content .budget-meta-item {
+  padding: 8px 10px !important;
+}
+
+.mobile-content .budget-meta-label {
+  font-size: 11px !important;
+}
+
+.mobile-content .budget-meta-value {
+  font-size: 14px !important;
+}
+
+/* ── CashFlow ── */
+.mobile-content .cashflow-summary {
+  grid-template-columns: 1fr 1fr !important;
+  gap: 8px !important;
+}
+
+/* ── Accounts ── */
+.mobile-content .accounts-grid {
+  grid-template-columns: 1fr !important;
+  gap: 8px !important;
+}
+
+.mobile-content .account-card {
+  padding: 10px 12px !important;
+  border-radius: 12px !important;
+}
+
+.mobile-content .account-bank {
+  font-size: 13px !important;
+}
+
+.mobile-content .account-value {
+  font-size: 16px !important;
+}
+
+/* ── Visión: ocultar gráfica del comparativo, reducir tabla ── */
+.mobile-content .section--comparison .chart-container {
+  display: none !important;
+}
+
+.mobile-content .section--comparison .comparison-selectors {
+  gap: 6px !important;
+}
+
+.mobile-content .section--comparison .comparison-row {
+  font-size: 0.72rem !important;
+}
+
+.mobile-content .section--comparison .comp-name {
+  font-size: 0.72rem !important;
+}
+
+.mobile-content .section--comparison .comp-val {
+  font-size: 0.72rem !important;
+}
+
+.mobile-content .section--comparison .comp-change {
+  font-size: 0.68rem !important;
+}
+
+.mobile-content .section--comparison .comparison-summary {
+  font-size: 0.8rem !important;
+}
+
+/* ── Presupuesto: ocultar gráfica Presupuesto vs Real ── */
+.mobile-content .section--budget-chart {
+  display: none !important;
+}
+
+/* ── Cuentas: ocultar Evolución de Cuentas y Rendimiento ── */
+.mobile-content .accounts-evolution-section {
+  display: none !important;
+}
+
+.mobile-content .section--rendimiento {
+  display: none !important;
+}
+
+/* Hide elements that don't fit on mobile */
+.mobile-content .app-footer {
+  display: none !important;
+}
+
+.mobile-content .bottom-panels {
+  grid-template-columns: 1fr !important;
+}

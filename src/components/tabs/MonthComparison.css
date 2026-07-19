@@ -1,0 +1,129 @@
+.comparison-selectors {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.comparison-selectors select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border-color-strong);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  cursor: pointer;
+}
+
+.comparison-selectors select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.comparison-vs {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.comparison-summary {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-surface-2);
+  border-radius: 8px;
+}
+
+.comparison-table {
+  margin-top: 1.5rem;
+}
+
+.comparison-row {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.5fr 1fr;
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid var(--border-color-soft);
+  align-items: center;
+  font-size: 0.82rem;
+}
+
+.comparison-header {
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-bottom: 2px solid var(--border-color);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.comparison-total {
+  font-weight: 700;
+  border-top: 2px solid var(--border-color);
+  border-bottom: none;
+  padding-top: 0.75rem;
+}
+
+.comp-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.comp-val {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.comp-change {
+  text-align: right;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.comparison-expandable {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.comparison-expandable:hover {
+  background: var(--bg-hover);
+}
+
+.comparison-expandable.expanded {
+  background: var(--primary-bg-soft);
+  font-weight: 600;
+}
+
+.comp-arrow {
+  font-size: 9px;
+  margin-right: 6px;
+  color: var(--text-muted);
+}
+
+.comparison-subrow {
+  background: var(--bg-surface-2);
+  padding-left: 1.5rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color-soft);
+}
+
+.comp-subname {
+  font-style: italic;
+}
+
+.comp-subval {
+  font-size: 0.73rem;
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 768px) {
+  .comparison-row {
+    grid-template-columns: 1.5fr 1fr 1fr 0.8fr;
+    font-size: 0.75rem;
+  }
+
+  .comparison-selectors {
+    flex-wrap: wrap;
+  }
+}

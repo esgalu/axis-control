@@ -1,0 +1,270 @@
+.add-expense-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 200;
+}
+
+.add-expense-card {
+  background: var(--bg-surface);
+  border-radius: 16px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.add-expense-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.add-expense-header h2 {
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+.add-expense-close {
+  font-size: 22px;
+  line-height: 1;
+  color: var(--text-muted);
+  padding: 0.2rem 0.4rem;
+}
+
+.add-expense-close:hover {
+  color: var(--text-primary);
+}
+
+.add-expense-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 1rem;
+}
+
+.add-expense-field label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+}
+
+.add-expense-field input[type="date"],
+.add-expense-field input[type="text"],
+.add-expense-field input[type="number"],
+.add-expense-field select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border-color-strong);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  font-family: inherit;
+}
+
+.add-expense-field input:focus,
+.add-expense-field select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.add-expense-field input:disabled,
+.add-expense-field select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.add-expense-box-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  gap: 8px;
+}
+
+.add-expense-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 4px;
+  border: 1px solid var(--border-color-strong);
+  border-radius: 10px;
+  background: var(--bg-surface);
+  transition: all 0.15s;
+}
+
+.add-expense-box:hover:not(:disabled) {
+  border-color: var(--color-primary);
+}
+
+.add-expense-box:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.add-expense-box.active {
+  border-color: var(--color-primary);
+  background: var(--primary-bg-soft);
+}
+
+.add-expense-box-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.add-expense-box-label {
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.add-expense-box.active .add-expense-box-label {
+  color: var(--color-primary);
+}
+
+.add-expense-custom-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.add-expense-custom-row input {
+  flex: 1;
+}
+
+.add-expense-link {
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  white-space: nowrap;
+  padding: 4px 0;
+}
+
+.add-expense-link:hover {
+  color: var(--color-primary-hover);
+}
+
+.add-expense-preview {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+.add-expense-field-error {
+  font-size: 0.75rem;
+  color: var(--color-danger);
+}
+
+.add-expense-month {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.add-expense-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 0.75rem 1rem;
+  background: var(--danger-bg-soft);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: var(--color-danger);
+}
+
+.add-expense-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 0.5rem;
+}
+
+.add-expense-btn-primary,
+.add-expense-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.add-expense-btn-primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.add-expense-btn-primary:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+.add-expense-btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.add-expense-btn-secondary {
+  background: var(--bg-surface-2);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.add-expense-btn-secondary:hover:not(:disabled) {
+  border-color: var(--border-color-strong);
+}
+
+.add-expense-spinner {
+  width: 13px;
+  height: 13px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  animation: add-expense-spin 0.7s linear infinite;
+}
+
+@keyframes add-expense-spin {
+  to { transform: rotate(360deg); }
+}
+
+.add-expense-success {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.add-expense-success-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-success);
+  margin-bottom: 8px;
+}
+
+.add-expense-success-detail {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.add-expense-success .add-expense-actions {
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .add-expense-card {
+    padding: 1.25rem;
+    max-width: 100%;
+  }
+}

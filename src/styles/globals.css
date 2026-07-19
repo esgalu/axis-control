@@ -1,0 +1,106 @@
+:root {
+  --color-primary: #185FA5;
+  --color-primary-dark: #0D3F7F;
+  --color-primary-hover: #0C447C;
+  --color-success: #6B8E23;
+  --color-danger: #c62828;
+  --color-warning: #f57c00;
+
+  --bg-page: #f5f5f5;
+  --bg-surface: #ffffff;
+  --bg-surface-2: #f9f9f9;
+  --bg-surface-3: #f0f0f0;
+  --bg-hover: #f0f6ff;
+
+  --border-color: #e0e0e0;
+  --border-color-soft: #f0f0f0;
+  --border-color-strong: #d0d0d0;
+
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-tertiary: #888888;
+  --text-muted: #999999;
+  --text-faint: #aaaaaa;
+  --text-heading-strong: #222222;
+
+  --success-bg-soft: #e8f5e9;
+  --danger-bg-soft: #ffebee;
+  --warning-bg-soft: #fff3e0;
+  --warning-border-soft: #ffcc80;
+  --primary-bg-soft: #e3f2fd;
+  --info-bg-soft: #e8eaf6;
+  --info-text: #3949ab;
+}
+
+:root[data-theme="dark"] {
+  --color-primary: #4f9ae0;
+  --color-primary-dark: #185FA5;
+  --color-primary-hover: #2f7bc4;
+  --color-success: #7cb342;
+  --color-danger: #ef5350;
+  --color-warning: #ffa726;
+
+  --bg-page: #0d1117;
+  --bg-surface: #161b22;
+  --bg-surface-2: #1c222b;
+  --bg-surface-3: #232a35;
+  --bg-hover: #1b2735;
+
+  --border-color: #2a313c;
+  --border-color-soft: #232a35;
+  --border-color-strong: #3a4350;
+
+  --text-primary: #f0f2f5;
+  --text-secondary: #b8c0cc;
+  --text-tertiary: #8b95a3;
+  --text-muted: #6f7885;
+  --text-faint: #5b6472;
+  --text-heading-strong: #ffffff;
+
+  --success-bg-soft: #16301c;
+  --danger-bg-soft: #3a1a1a;
+  --warning-bg-soft: #3a2a10;
+  --warning-border-soft: #6b4a1f;
+  --primary-bg-soft: #132a3d;
+  --info-bg-soft: #20263d;
+  --info-text: #8f9de0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
