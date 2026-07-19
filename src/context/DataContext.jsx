@@ -9,9 +9,9 @@ const SHEET_ID = import.meta.env.VITE_GOOGLE_SHEET_ID
 
 export function DataProvider({ children }) {
   const { accessToken, isAuthenticated } = useAuth()
-  const [data, setData] = useState(DATA)
-  const [dataSource, setDataSource] = useState('local')
-  const [isLoading, setIsLoading] = useState(false)
+  const [data, setData] = useState(null)
+  const [dataSource, setDataSource] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
 
   const loadGoogleData = useCallback(async (token) => {
@@ -41,9 +41,10 @@ export function DataProvider({ children }) {
     if (isAuthenticated && accessToken) {
       loadGoogleData(accessToken)
     } else {
-      setData(DATA)
-      setDataSource('local')
+      setData(null)
+      setDataSource(null)
       setError(null)
+      setIsLoading(false)
     }
   }, [isAuthenticated, accessToken, loadGoogleData])
 

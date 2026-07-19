@@ -8,22 +8,31 @@ const OTRA = '__otra__'
 const SHEET_ID = import.meta.env.VITE_GOOGLE_SHEET_ID
 
 const CLASIFICACION_ICONS = {
-  HOGAR: '🏠',
-  DEPORTE: '🏃',
-  PAREJA: '❤️',
-  PERRITOS: '🐶',
-  MERCADO: '🛒',
-  PERSONAL: '🧴',
-  AMIGOS: '🎉',
+  AHORRO: '👛',
   'AI & STREAMING': '🎬',
+  ALIMENTACION: '🍣',
+  AMIGOS: '🧑‍🤝‍🧑',
   AUTO: '🚗',
+  BANCO: '🏦',
+  DEPORTE: '⚽',
+  DEUDA: '💰',
   FAMILIA: '👨‍👩‍👧',
-  BANCO: '🏦'
+  HOGAR: '🏠',
+  MERCADO: '🛒',
+  PAREJA: '💑',
+  PERRITOS: '🐶',
+  PERSONAL: '🧴',
+  STREAMING: '💻',
+  TRANSPORTE: '🏍️'
 }
 const DEFAULT_ICON = '🏷️'
 
+function normalizeKey(str) {
+  return str?.normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase() || ''
+}
+
 function iconFor(name) {
-  return CLASIFICACION_ICONS[name?.toUpperCase()] || DEFAULT_ICON
+  return CLASIFICACION_ICONS[normalizeKey(name)] || DEFAULT_ICON
 }
 
 function todayISO() {

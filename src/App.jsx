@@ -33,7 +33,7 @@ function App() {
   }, [])
   const { kpis, expenses, trend, projectedTrend, cashFlow, topExpenses, budgetData, accounts, movements, accountTimeSeries, incomeAnalysis, currentMonth, monthlyIncome, incomeStats, projectedIncomeTrend, isLoading, error, dataSource, refreshData } = useDashboardData()
 
-  const clasificacionOptions = useMemo(() => expenses?.categories?.map(c => c.name) || [], [expenses])
+  const clasificacionOptions = useMemo(() => (expenses?.categories?.map(c => c.name) || []).sort(), [expenses])
 
   const categoriasByClasificacion = useMemo(() => {
     const sets = {}
