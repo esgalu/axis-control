@@ -96,6 +96,22 @@ export function formatMonth(monthStr) {
   }
 }
 
+// Mes por defecto: el mes calendario real si tiene datos; si no, el mes
+// disponible mas reciente que no sea posterior a hoy (nunca salta a un mes
+// futuro cargado por adelantado en la hoja); si no hay ninguno anterior,
+// el ultimo disponible.
+export function getDefaultMonth(availableMonths, currentMonth) {
+  if (!availableMonths || availableMonths.length === 0) return undefined
+  if (currentMonth && availableMonths.includes(currentMonth)) return currentMonth
+
+  const priorMonths = currentMonth
+    ? availableMonths.filter(m => m <= currentMonth)
+    : availableMonths
+  if (priorMonths.length > 0) return priorMonths[priorMonths.length - 1]
+
+  return availableMonths[availableMonths.length - 1]
+}
+
 // Calcular % de cambio
 export function calculateChange(current, previous) {
   if (!previous || previous === 0) return 0

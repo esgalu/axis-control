@@ -153,6 +153,25 @@
   background: var(--color-primary-hover);
 }
 
+/* ── Agregar ingreso (Cuentas) ── */
+.mobile-content .add-expense-trigger-row {
+  margin: 0 0 10px;
+}
+
+.mobile-content .add-expense-trigger-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.mobile-content .add-expense-trigger-btn:active {
+  background: var(--color-primary-hover);
+}
+
 /* ── KPI Cards ── */
 .mobile-content .kpi-grid {
   grid-template-columns: 1fr 1fr !important;

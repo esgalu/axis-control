@@ -53,12 +53,12 @@ export default function MobileDashboard({ kpis, expenses, trend, projectedTrend,
             <button className="mobile-add-expense-btn" onClick={() => setShowAddExpense(true)}>
               + Agregar gasto
             </button>
-            <Overview expenses={expenses} topExpenses={topExpenses} />
+            <Overview expenses={expenses} topExpenses={topExpenses} currentMonth={currentMonth} />
           </>
         )}
-        {activeTab === 'budget' && <Budget budgetData={budgetData} kpis={kpis} expenses={expenses} />}
+        {activeTab === 'budget' && <Budget budgetData={budgetData} kpis={kpis} expenses={expenses} currentMonth={currentMonth} />}
         {activeTab === 'cashflow' && <CashFlow cashFlow={cashFlow} totalBudget={totalBudget} />}
-        {activeTab === 'accounts' && <Accounts incomeAnalysis={incomeAnalysis} currentMonth={currentMonth} />}
+        {activeTab === 'accounts' && <Accounts incomeAnalysis={incomeAnalysis} currentMonth={currentMonth} refreshData={refreshData} />}
         {activeTab === 'trends' && <Trends trend={trend} projectedTrend={projectedTrend} accounts={accounts} monthlyIncome={monthlyIncome} incomeStats={incomeStats} projectedIncomeTrend={projectedIncomeTrend} mobileMode />}
       </div>
 

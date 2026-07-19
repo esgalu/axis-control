@@ -150,10 +150,10 @@ function App() {
             <NavTabs activeTab={activeTab} onTabChange={setActiveTab} />
 
             <div className="tab-container">
-              {activeTab === 'overview' && <Overview expenses={expenses} topExpenses={topExpenses} />}
-              {activeTab === 'budget' && <Budget budgetData={budgetData} kpis={kpis} expenses={expenses} />}
+              {activeTab === 'overview' && <Overview expenses={expenses} topExpenses={topExpenses} currentMonth={currentMonth} />}
+              {activeTab === 'budget' && <Budget budgetData={budgetData} kpis={kpis} expenses={expenses} currentMonth={currentMonth} />}
               {activeTab === 'cashflow' && <CashFlow cashFlow={cashFlow} totalBudget={budgetData?.reduce((sum, b) => sum + b.presupuesto, 0) || 0} />}
-              {activeTab === 'accounts' && <Accounts incomeAnalysis={incomeAnalysis} currentMonth={currentMonth} />}
+              {activeTab === 'accounts' && <Accounts incomeAnalysis={incomeAnalysis} currentMonth={currentMonth} refreshData={refreshData} />}
               {activeTab === 'trends' && <Trends trend={trend} projectedTrend={projectedTrend} accounts={accounts} monthlyIncome={monthlyIncome} incomeStats={incomeStats} projectedIncomeTrend={projectedIncomeTrend} />}
             </div>
           </>
@@ -177,6 +177,11 @@ function App() {
             budgetData={budgetData}
             accounts={accounts}
             accountTimeSeries={accountTimeSeries}
+            incomeAnalysis={incomeAnalysis}
+            currentMonth={currentMonth}
+            monthlyIncome={monthlyIncome}
+            incomeStats={incomeStats}
+            projectedIncomeTrend={projectedIncomeTrend}
             clasificacionOptions={clasificacionOptions}
             categoriasByClasificacion={categoriasByClasificacion}
             refreshData={refreshData}

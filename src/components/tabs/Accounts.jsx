@@ -1,4 +1,6 @@
+import { useMemo, useState } from 'react'
 import { formatCurrency, formatMonth } from '../../utils/formatters'
+import AddIncomeModal from '../AddIncomeModal'
 import '../tabs/Accounts.css'
 
 const ESTADO_LABEL = {
@@ -10,16 +12,41 @@ const ESTADO_LABEL = {
   'sin-rango': 'Sin histórico'
 }
 
-export default function Accounts({ incomeAnalysis, currentMonth }) {
+export default function Accounts({ incomeAnalysis, currentMonth, refreshData }) {
+  const [showAddIncome, setShowAddIncome] = useState(false)
+
+  const consultorioOptions = useMemo(() => {
+    const names = (incomeAnalysis || []).map(c => c.consultorio).filter(Boolean)
+    return Array.from(new Set(names)).sort()
+  }, [incomeAnalysis])
+
+  const addIncomeTrigger = (
+    <div className="add-expense-trigger-row">
+      <button className="add-expense-trigger-btn" onClick={() => setShowAddIncome(true)}>
+        + Agregar ingreso
+      </button>
+    </div>
+  )
+
+  const addIncomeModal = showAddIncome && (
+    <AddIncomeModal
+      onClose={() => setShowAddIncome(false)}
+      onSuccess={refreshData}
+      consultorioOptions={consultorioOptions}
+    />
+  )
+
   if (!incomeAnalysis || !Array.isArray(incomeAnalysis) || incomeAnalysis.length === 0) {
     return (
       <div className="tab-content">
+        {addIncomeTrigger}
         <div className="section">
           <h2>Ingresos por Consultorio</h2>
           <p style={{ color: 'var(--text-muted)', textAlign: 'center', padding: '2rem' }}>
             Sin datos de ingresos. Crea las hojas INGRESOS y ANALISIS en tu Google Sheet.
           </p>
         </div>
+        {addIncomeModal}
       </div>
     )
   }
@@ -31,6 +58,8 @@ export default function Accounts({ incomeAnalysis, currentMonth }) {
 
   return (
     <div className="tab-content">
+      {addIncomeTrigger}
+
       <div className="section">
         <div className="section-header">
           <h2>Ingresos por Consultorio {currentMonth ? `- ${formatMonth(currentMonth)}` : ''}</h2>
@@ -67,6 +96,8 @@ export default function Accounts({ incomeAnalysis, currentMonth }) {
           ))}
         </div>
       </div>
+
+      {addIncomeModal}
     </div>
   )
 }

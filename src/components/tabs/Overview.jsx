@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts'
-import { formatMonth, formatCurrency } from '../../utils/formatters'
+import { formatMonth, formatCurrency, getDefaultMonth } from '../../utils/formatters'
 import MonthComparison from './MonthComparison'
 import TopExpenses from '../TopExpenses'
 import '../tabs/Overview.css'
@@ -17,9 +17,9 @@ function CustomTooltip({ active, payload }) {
   )
 }
 
-export default function Overview({ expenses, topExpenses }) {
-  const availableMonths = expenses.monthly?.map(m => m.month) || []
-  const [selectedMonth, setSelectedMonth] = useState(availableMonths[availableMonths.length - 1])
+export default function Overview({ expenses, topExpenses, currentMonth }) {
+  const availableMonths = (expenses.monthly?.map(m => m.month) || []).sort()
+  const [selectedMonth, setSelectedMonth] = useState(() => getDefaultMonth(availableMonths, currentMonth))
 
   const pieChartData = selectedMonth && expenses.categoriesByMonth?.[selectedMonth]
     ? expenses.categoriesByMonth[selectedMonth]
@@ -97,7 +97,7 @@ export default function Overview({ expenses, topExpenses }) {
       </div>
 
       {expenses.categoriesByMonth && Object.keys(expenses.categoriesByMonth).length >= 2 && (
-        <MonthComparison expenses={expenses} />
+        <MonthComparison expenses={expenses} currentMonth={currentMonth} />
       )}
 
       <TopExpenses topExpenses={topExpenses} />

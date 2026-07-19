@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts'
-import { formatCurrency, formatShortCurrency, formatMonth } from '../../utils/formatters'
+import { formatCurrency, formatShortCurrency, formatMonth, getDefaultMonth } from '../../utils/formatters'
 import './Budget.css'
 
 function getStatusColor(estado) {
@@ -9,7 +9,7 @@ function getStatusColor(estado) {
   return 'var(--color-success)'
 }
 
-export default function Budget({ budgetData, kpis, expenses }) {
+export default function Budget({ budgetData, kpis, expenses, currentMonth }) {
   if (!budgetData || budgetData.length === 0) {
     return (
       <div className="tab-content">
@@ -24,7 +24,7 @@ export default function Budget({ budgetData, kpis, expenses }) {
   }
 
   const availableMonths = expenses?.monthly?.map(m => m.month).sort() || []
-  const [selectedMonth, setSelectedMonth] = useState(availableMonths[availableMonths.length - 1])
+  const [selectedMonth, setSelectedMonth] = useState(() => getDefaultMonth(availableMonths, currentMonth))
 
   const monthBudget = useMemo(() => {
     const expensesByCat = {}
@@ -50,7 +50,7 @@ export default function Budget({ budgetData, kpis, expenses }) {
   const overallPct = totalBudget > 0 ? (totalSpent / totalBudget) * 100 : 0
   const overallColor = overallPct > 100 ? 'var(--color-danger)' : overallPct > 80 ? 'var(--color-warning)' : 'var(--color-success)'
 
-  const isCurrentMonth = selectedMonth === availableMonths[availableMonths.length - 1]
+  const isCurrentMonth = selectedMonth === currentMonth
   const projectedMonthEnd = useMemo(() => {
     if (!selectedMonth) return 0
     if (isCurrentMonth) {

@@ -330,6 +330,17 @@ export async function appendCostRow(accessToken, spreadsheetId, { fecha, clasifi
   }
 }
 
+export async function appendIncomeRow(accessToken, spreadsheetId, { fecha, consultorio, monto }) {
+  // INGRESOS!A:C es FECHA | CONSULTORIO | MONTO, sin columna con formula
+  // (a diferencia de GASTOS!B), asi que un solo append basta.
+  const appendUrl = `${SHEETS_API}/${spreadsheetId}/values/${encodeURIComponent('INGRESOS!A:C')}:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`
+  const appendBody = { values: [[fecha, consultorio.trim(), monto]] }
+
+  await axios.post(appendUrl, appendBody, {
+    headers: { Authorization: `Bearer ${accessToken}` }
+  })
+}
+
 export async function fetchSheetData(accessToken, spreadsheetId) {
   // Leer SNAPSHOTS/SAVINGS (opcional: hojas de cuentas/patrimonio, no todos los
   // spreadsheets las tienen — ej. FINANZAS JULI no trackea cuentas)

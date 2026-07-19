@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts'
-import { formatMonth, formatCurrency, formatShortCurrency, calculateChange } from '../../utils/formatters'
+import { formatMonth, formatCurrency, formatShortCurrency, calculateChange, getDefaultMonth } from '../../utils/formatters'
 import './MonthComparison.css'
 
-export default function MonthComparison({ expenses }) {
+export default function MonthComparison({ expenses, currentMonth }) {
   const months = Object.keys(expenses.categoriesByMonth).sort()
-  const [monthA, setMonthA] = useState(months[months.length - 2])
-  const [monthB, setMonthB] = useState(months[months.length - 1])
+  const [monthB, setMonthB] = useState(() => getDefaultMonth(months, currentMonth))
+  const [monthA, setMonthA] = useState(() => {
+    const idxB = months.indexOf(getDefaultMonth(months, currentMonth))
+    return idxB > 0 ? months[idxB - 1] : months[months.length - 2]
+  })
   const [expanded, setExpanded] = useState({})
 
   const detail = expenses.detail || {}
